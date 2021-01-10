@@ -102,67 +102,132 @@ nav {
   overflow: hidden;
 }
 .hero-intro {
-    flex: 2 1 40rem;
-    text-align: center;
+  flex: 2 1 40rem;
+  text-align: center;
 }
 .hero-intro p {
-    padding: 5rem 10rem;
+  padding: 5rem 10rem;
 }
 .hero-intro h2 {
-    padding: 3rem;
+  padding: 3rem;
 }
 .hero-intro a {
-    padding: 2rem 8rem;
-    border: 3px solid black;
-    margin-bottom: 4rem;
+  padding: 2rem 8rem;
+  border: 3px solid black;
+  margin-bottom: 4rem;
 }
 .hero-images {
-    flex: 1 1 40rem;
-    background: linear-gradient(#dad8dd, #dad1d4);
-    position: relative;
-    z-index: 1;
+  flex: 1 1 40rem;
+  background: linear-gradient(#dad8dd, #dad1d4);
+  position: relative;
+  z-index: 1;
 }
 .hero-elena {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 .plant {
-    position: absolute;
-    bottom: -20px;
-    left: -20%;
-    z-index: -1;
-    animation: plant-entrance 1.5s ease-in-out,
+  position: absolute;
+  bottom: -20px;
+  left: -20%;
+  z-index: -1;
+  animation: plant-entrance 1.5s ease-in-out,
     plant-shake 2.5s infinite ease alternate-reverse 2s;
-    transform-origin: bottom;
+  transform-origin: bottom;
+  max-height: 80%;
 }
 .plant2 {
-    left: 40%;
+  left: 40%;
+}
+.burger,
+.menu-check {
+    display: none;
 }
 
 /* Animation */
 
 @keyframes opening {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 @keyframes plant-entrance {
-    from {
-        transform: translateY(10%) rotateZ(-10deg) rotateX(-90deg);
-    } 
-    to {
-        transform: translateY(0%) rotateZ(0deg) rotateX(0deg);
-    }
+  from {
+    transform: translateY(10%) rotateZ(-10deg) rotateX(-90deg);
+  }
+  to {
+    transform: translateY(0%) rotateZ(0deg) rotateX(0deg);
+  }
 }
 @keyframes plant-shake {
-    from {
-        transform: rotateZ(-5deg);
+  from {
+    transform: rotateZ(-5deg);
+  }
+  to {
+    transform: rotateZ(0deg);
+  }
+}
+
+/* Media Queries */
+
+@media screen and (max-width:842px) {
+    .hero {
+        width: 100%;
     }
-    to {
-        transform: rotateZ(0deg);
+    .hero-intro p {
+        padding: 5rem 3rem;
     }
+
+    /* Hell */
+
+    .burger {
+        position: relative;
+        display: block;
+    }
+    .burger span {
+        padding: 0.2rem 2rem;
+        background: var(--gray-text);
+        margin: 0.5rem 0rem;
+        display: block;
+    }
+    .nav-links a {
+        color: white;
+        font-size: var(--header2);
+        text-decoration: underline;
+    }
+    .nav-links {
+        background: var(--background-color);
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        left: 100%;
+        flex-direction: column;
+        align-items: center;
+        transition: transform 0.4s ease;
+    }
+    .menu-check {
+        display: block;
+        position: absolute;
+        top: 50%;
+        right: 5%;
+        transform: translate(5%, -50%);
+        width: 5rem;
+        height: 5rem;
+        cursor: pointer;
+        opacity: 0;
+        z-index: 100;
+    }
+    .menu-check:checked + .nav-links {
+        transform: translateX(-100%);
+    }
+    .menu-check:checked ~ .burger span {
+        background: white;
+    }
+
+    /* End of Hell */
 }
